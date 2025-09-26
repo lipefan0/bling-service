@@ -1,1 +1,17 @@
-spring.application.name=bling-service
+spring:
+  application:
+    name: bling-service
+
+  rabbitmq:
+    host: 5.78.92.146
+    port: 5672
+    username: admin
+    password: ${RABBITMQ_PASSWORD}
+
+server:
+  port: 8081
+
+bling:
+  api:
+    url: https://api.bling.com.br/Api/v3"
+
