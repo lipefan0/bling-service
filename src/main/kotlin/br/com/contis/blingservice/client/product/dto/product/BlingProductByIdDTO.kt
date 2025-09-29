@@ -1,3 +1,7 @@
 package br.com.contis.blingservice.client.product.dto.product
 
-data class BlingProductByIdDTO()
+import java.math.BigDecimal
+
+data class BlingProductByIdDTO(
+    val data: BlingProductByIdData
+)
