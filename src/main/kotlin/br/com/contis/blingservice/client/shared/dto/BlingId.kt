@@ -1,4 +1,4 @@
-package br.com.contis.blingservice.client.dto.order
+package br.com.contis.blingservice.client.shared.dto
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 

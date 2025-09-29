@@ -1,5 +1,6 @@
-package br.com.contis.blingservice.client.dto.order
+package br.com.contis.blingservice.client.order.dto.order
 
+import br.com.contis.blingservice.client.shared.dto.BlingId
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.math.BigDecimal
 

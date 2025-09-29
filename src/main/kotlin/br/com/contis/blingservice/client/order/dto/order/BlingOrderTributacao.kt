@@ -1,4 +1,4 @@
-package br.com.contis.blingservice.client.dto.order
+package br.com.contis.blingservice.client.order.dto.order
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.math.BigDecimal
