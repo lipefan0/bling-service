@@ -3,7 +3,7 @@ package br.com.contis.blingservice.consumer
 import br.com.contis.blingservice.client.credentials.CredentialsClient
 import br.com.contis.blingservice.client.order.dto.get.WebhookVendaPayload
 import br.com.contis.blingservice.config.RabbitMqConfig
-import br.com.contis.blingservice.service.BlingProcessingService
+import br.com.contis.blingservice.service.BlingOrderService
 import com.rabbitmq.client.Channel
 import kotlinx.coroutines.runBlocking
 import org.slf4j.LoggerFactory
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class BlingWebhookConsumer(
-    private val processingService: BlingProcessingService,
+    private val processingService: BlingOrderService,
     private val credentialsClient: CredentialsClient
 ) {
     private val log = LoggerFactory.getLogger(javaClass)

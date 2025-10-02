@@ -2,6 +2,7 @@ package br.com.contis.blingservice.client.order
 
 import br.com.contis.blingservice.client.order.dto.get.BlingListOrdeData
 import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
+import br.com.contis.blingservice.client.order.dto.get.ListBlingOrdersDTO
 import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderDTO
 import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderResponseDTO
 import br.com.contis.blingservice.client.order.dto.post.NfceResponseDTO
@@ -103,12 +104,12 @@ class VendaClient(
             .awaitBody<BlingOrderResponseDTO>()
     }
 
-    suspend fun findOrderByNumber(orderNumber: String, apiKey: String): BlingListOrdeData {
+    suspend fun findOrderByNumber(orderNumber: String, apiKey: String): ListBlingOrdersDTO {
         return webClient.get()
             .uri("/pedidos/vendas?numero=${orderNumber}")
             .header("Authorization", "Bearer $apiKey")
             .retrieve()
-            .awaitBody<BlingListOrdeData>()
+            .awaitBody<ListBlingOrdersDTO>()
     }
 
     suspend fun listOrders(apiKey: String): BlingListOrdeData {
