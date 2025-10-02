@@ -87,6 +87,14 @@ class VendaClient(
             .awaitBody<BlingCreateOrderResponseDTO>()
     }
 
+    suspend fun updateOrderStatus(orderId: Long, statusId: Long, apiKey: String): ResponseEntity<Void> {
+        return webClient.patch()
+            .uri("/pedidos/vendas/$orderId/situacoes/$statusId")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBodilessEntity()
+    }
+
     suspend fun findOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
         return webClient.get()
             .uri("/pedidos/vendas/$orderId")
