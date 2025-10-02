@@ -4,6 +4,7 @@ import br.com.contis.blingservice.client.order.dto.get.BlingListOrdeData
 import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
 import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderDTO
 import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderResponseDTO
+import br.com.contis.blingservice.client.order.dto.post.NfceResponseDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
@@ -58,6 +59,22 @@ class VendaClient(
             .header("Authorization", "Bearer $apiKey")
             .retrieve()
             .awaitBodilessEntity()
+    }
+
+    suspend fun postNfe(orderId: Long, apiKey: String): ResponseEntity<NfceResponseDTO>{
+        return webClient.post()
+            .uri("/pedidos/vendas/$orderId/gerar-nfce")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBody()
+    }
+
+    suspend fun postNfce(orderId: Long, apiKey: String): ResponseEntity<NfceResponseDTO> {
+        return webClient.post()
+            .uri("/pedidos/vendas/$orderId/gerar-nfce")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBody()
     }
 
     suspend fun findOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
