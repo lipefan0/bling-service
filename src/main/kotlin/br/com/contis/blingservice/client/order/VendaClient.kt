@@ -63,7 +63,7 @@ class VendaClient(
 
     suspend fun postNfe(orderId: Long, apiKey: String): ResponseEntity<NfceResponseDTO>{
         return webClient.post()
-            .uri("/pedidos/vendas/$orderId/gerar-nfce")
+            .uri("/pedidos/vendas/$orderId/gerar-nfe")
             .header("Authorization", "Bearer $apiKey")
             .retrieve()
             .awaitBody()
