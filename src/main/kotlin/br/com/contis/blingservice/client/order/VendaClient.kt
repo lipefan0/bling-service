@@ -119,5 +119,13 @@ class VendaClient(
             .awaitBody<BlingListOrdeData>()
     }
 
+    suspend fun deleteOrder(orderId: Long, apiKey: String): ResponseEntity<Void> {
+        return webClient.delete()
+            .uri("/pedidos/vendas/$orderId")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBodilessEntity()
+    }
+
 
 }
