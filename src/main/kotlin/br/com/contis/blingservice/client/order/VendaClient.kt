@@ -2,6 +2,8 @@ package br.com.contis.blingservice.client.order
 
 import br.com.contis.blingservice.client.order.dto.get.BlingListOrdeData
 import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
+import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderDTO
+import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderResponseDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
@@ -15,13 +17,13 @@ class VendaClient(
 
     private val webClient = webClientBuilder.baseUrl(blingApiUrl).build()
 
-    suspend fun createOrder(payload: BlingCreateOrderDTO, apiKey: String): BlingOrderResponseDTO {
+    suspend fun createOrder(payload: BlingCreateOrderDTO, apiKey: String): BlingCreateOrderResponseDTO {
         return webClient.post()
             .uri("/pedidos/vendas")
             .header("Authorization", "Bearer $apiKey")
             .bodyValue(payload)
             .retrieve()
-            .awaitBody<BlingOrderResponseDTO>()
+            .awaitBody<BlingCreateOrderResponseDTO>()
     }
 
     suspend fun findOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
