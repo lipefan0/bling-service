@@ -44,6 +44,22 @@ class VendaClient(
             .awaitBodilessEntity()
     }
 
+    suspend fun postReceivables(orderId: Long, apiKey: String): ResponseEntity<Void> {
+        return webClient.post()
+            .uri("/pedidos/vendas/$orderId/lancar-contas")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBodilessEntity()
+    }
+
+    suspend fun reverseReceivables(orderId: Long, apiKey: String): ResponseEntity<Void> {
+        return webClient.post()
+            .uri("/pedidos/vendas/$orderId/estornar-contas")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBodilessEntity()
+    }
+
     suspend fun findOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
         return webClient.get()
             .uri("/pedidos/vendas/$orderId")
