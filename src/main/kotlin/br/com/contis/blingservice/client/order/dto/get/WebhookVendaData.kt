@@ -1,4 +1,4 @@
-package br.com.contis.blingservice.client.order.dto.order
+package br.com.contis.blingservice.client.order.dto.get
 
 import br.com.contis.blingservice.client.shared.dto.BlingId
 import java.math.BigDecimal

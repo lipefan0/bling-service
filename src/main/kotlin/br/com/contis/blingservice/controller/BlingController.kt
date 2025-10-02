@@ -1,6 +1,6 @@
 package br.com.contis.blingservice.controller
 
-import br.com.contis.blingservice.client.order.dto.order.BlingOrderResponseDTO
+import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
 import br.com.contis.blingservice.service.BlingProcessingService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
