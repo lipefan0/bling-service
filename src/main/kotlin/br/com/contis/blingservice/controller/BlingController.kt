@@ -15,6 +15,6 @@ class BlingController(
 
     @GetMapping("/{orderId}")
     suspend fun getOrderById(@PathVariable orderId: Long): BlingOrderResponseDTO {
-        return processingService.processOrderById(orderId)
+        return processingService.processOrderById(orderId, "asdasd")
     }
 }

@@ -14,12 +14,9 @@ class BlingProcessingService(
 ) {
     private val log = LoggerFactory.getLogger(this.javaClass)
 
-    suspend fun processOrderById(orderId: Long): BlingOrderResponseDTO {
+    suspend fun processOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
         try {
             log.info("Iniciando o processamento do pedido com ID: $orderId")
-
-            // Simulação de obtenção da chave da API (pode ser de um banco de dados ou configuração)
-            val apiKey = "sua_chave_api_aqui"
 
             val orderResponse = vendaClient.findOrderById(orderId, apiKey)
 
@@ -44,4 +41,5 @@ class BlingProcessingService(
             throw e
         }
     }
+
 }
