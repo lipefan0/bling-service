@@ -7,11 +7,23 @@ spring:
     port: 5672
     username: admin
     password: ${RABBITMQ_PASSWORD}
+    listener:
+      simple:
+        acknowledge-mode: manual
 
 server:
   port: 8081
 
 bling:
   api:
-    url: https://api.bling.com.br/Api/v3"
+    url: https://api.bling.com.br/Api/v3
 
+credentials:
+    api:
+        key: ${CREDENTIALS_API_KEY}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,prometheus"
