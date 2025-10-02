@@ -5,6 +5,7 @@ import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
 import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderDTO
 import br.com.contis.blingservice.client.order.dto.post.BlingCreateOrderResponseDTO
 import br.com.contis.blingservice.client.order.dto.post.NfceResponseDTO
+import br.com.contis.blingservice.client.order.dto.put.BlingUpdateOrderDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
@@ -75,6 +76,15 @@ class VendaClient(
             .header("Authorization", "Bearer $apiKey")
             .retrieve()
             .awaitBody()
+    }
+
+    suspend fun updateOrder(orderId: Long, payload: BlingUpdateOrderDTO, apiKey: String): BlingCreateOrderResponseDTO {
+        return webClient.put()
+            .uri("/pedidos/vendas/$orderId")
+            .header("Authorization","Bearer $apiKey")
+            .bodyValue(payload)
+            .retrieve()
+            .awaitBody<BlingCreateOrderResponseDTO>()
     }
 
     suspend fun findOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
