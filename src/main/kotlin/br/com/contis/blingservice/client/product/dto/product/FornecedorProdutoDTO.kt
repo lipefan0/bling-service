@@ -1,6 +1,5 @@
 package br.com.contis.blingservice.client.product.dto.product
 
-import br.com.contis.blingservice.client.order.dto.order.BlingOrderContato
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.math.BigDecimal
 

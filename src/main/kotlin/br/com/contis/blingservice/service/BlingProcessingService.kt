@@ -1,7 +1,7 @@
 package br.com.contis.blingservice.service
 
 import br.com.contis.blingservice.client.order.VendaClient
-import br.com.contis.blingservice.client.order.dto.order.BlingOrderResponseDTO
+import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
 import br.com.contis.blingservice.config.RabbitMqConfig
 import org.slf4j.LoggerFactory
 import org.springframework.amqp.rabbit.core.RabbitTemplate

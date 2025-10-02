@@ -1,9 +1,9 @@
-package br.com.contis.blingservice.client.order.dto.order
+package br.com.contis.blingservice.client.order.dto.get
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class BlingOrderTransporteContato(
+data class BlingOrderSituacao(
     val id: Long? = null,
-    val nome: String? = null
+    val valor: Int? = null
 )

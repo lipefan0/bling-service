@@ -1,7 +1,7 @@
 package br.com.contis.blingservice.client.order
 
-import br.com.contis.blingservice.client.order.dto.order.BlingListOrdeData
-import br.com.contis.blingservice.client.order.dto.order.BlingOrderResponseDTO
+import br.com.contis.blingservice.client.order.dto.get.BlingListOrdeData
+import br.com.contis.blingservice.client.order.dto.get.BlingOrderResponseDTO
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
@@ -15,12 +15,29 @@ class VendaClient(
 
     private val webClient = webClientBuilder.baseUrl(blingApiUrl).build()
 
+    suspend fun createOrder(payload: BlingCreateOrderDTO, apiKey: String): BlingOrderResponseDTO {
+        return webClient.post()
+            .uri("/pedidos/vendas")
+            .header("Authorization", "Bearer $apiKey")
+            .bodyValue(payload)
+            .retrieve()
+            .awaitBody<BlingOrderResponseDTO>()
+    }
+
     suspend fun findOrderById(orderId: Long, apiKey: String): BlingOrderResponseDTO {
         return webClient.get()
             .uri("/pedidos/vendas/$orderId")
             .header("Authorization", "Bearer $apiKey")
             .retrieve()
             .awaitBody<BlingOrderResponseDTO>()
+    }
+
+    suspend fun findOrderByNumber(orderNumber: String, apiKey: String): BlingListOrdeData {
+        return webClient.get()
+            .uri("/pedidos/vendas?numero=${orderNumber}")
+            .header("Authorization", "Bearer $apiKey")
+            .retrieve()
+            .awaitBody<BlingListOrdeData>()
     }
 
     suspend fun listOrders(apiKey: String): BlingListOrdeData {
@@ -30,4 +47,6 @@ class VendaClient(
             .retrieve()
             .awaitBody<BlingListOrdeData>()
     }
+
+
 }
